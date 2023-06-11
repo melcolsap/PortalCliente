@@ -1,0 +1,44 @@
+<core:FragmentDefinition 
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.f" 
+	xmlns="sap.m" 
+	xmlns:lf="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout"
+	xmlns:grid="sap.ui.layout.cssgrid" 
+	xmlns:form="sap.ui.layout.form" 
+	xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:smartForm="sap.ui.comp.smartform" 
+	busyIndicatorSize="Large">
+	<Table id="TablaFacturas" noDataText="No posiciones" rememberSelections="false" itemPress="PopUpFilaFormato" sticky="ColumnHeaders,HeaderToolbar" alternateRowColors="row">
+		<columns>
+			<Column id="column0Preventivo" mergeDuplicates="true" hAlign="Center" width="80px">
+				<header>
+					<FormattedText htmlText="&lt;strong&gt;ID FORMATO &lt;/strong&gt;"/>
+				</header>
+			</Column>
+			<Column id="column1Preventivo">
+				<header>
+					<FormattedText htmlText="&lt;strong&gt;TITULO &lt;/strong&gt;"/>
+				</header>
+			</Column>
+		<Column id="column2Preventivo">
+			<header>
+				<FormattedText htmlText="&lt;strong&gt;VALOR &lt;/strong&gt;"/>
+			</header>
+		</Column>
+		</columns>
+		<headerToolbar>
+			<OverflowToolbar width="100%">
+				<content>
+						<!--<Button id="BotonIniciar"		icon="sap-icon://begin" text="Iniciar"	 press="OrdenStatusUsuario"/>
+						<Button id="BotonFinalizar" 	icon="sap-icon://stop"	text="Finalizar" press="OrdenStatusUsuario"/>
+						<Button id="BotonReprogramar"	icon="sap-icon://future" text="Reprogramar"	 press="OrdenStatusUsuario"/>
+						<Button id="BotonCancelar"		icon="sap-icon://cancel-maintenance"	text="Cancelar" press="OrdenStatusUsuario"/>-->
+						<ToolbarSpacer/>
+						<Button id="BotonLlenarAvisoLlamada" icon="sap-icon://add-activity-2" text="Gestionar llamada" press="LlenarAvisoLlamada" visible="false"/>
+						<Button id="BotonPdf" icon="sap-icon://pdf-reader" text="PDF" press=".onViewPdfTemplate"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+	</Table>
+</core:FragmentDefinition>	

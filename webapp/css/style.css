@@ -1,0 +1,61 @@
+/* Enter your custom styles here */
+.mitsubishiLogo {
+	height: 60%;
+}
+
+.MitsubishiTitle {
+	color: white !important;
+	font-size: 1rem;
+	font-weight: bold;
+	text-shadow: none !important;
+	font-style: roboto !important;
+	text-decoration: none !important;
+}
+.RobotoType {
+	font-style: roboto !important;
+}
+.FondoImagen {
+	background:url(img/Mitsubishi.png);
+}
+.noBoderToolbar{
+	border-bottom: none;
+	height: 20px;
+	margin-bottom: 0.5;
+}
+.headPages {
+	padding: 1rem;
+	background-color:#ffffff;
+}
+
+.tileContainerBackground{
+	background-color:#fff;
+	height:215px;
+	width:300px;
+	
+}
+.tileContainerBorder{
+	border:1px solid transparent;
+	box-shadow: -5px 4px 0 0.0625rem rgb(0 0 0 / 10%), 0 0.125rem 0.5rem 0 rgb(0 0 0 / 10%);
+	box-sizing: border-box;
+	border-radius: 0.25rem;
+}
+.tileContainerFlexBox{
+	height: 150px;
+}
+.tileContainerFlexBox > .sapMLabel{
+	width: 28%;
+	padding: 4px 12px 1px 0;
+	text-align: end !important;
+}
+
+.tileContainerFlexBox > .sapMText{
+	width: 57%;
+	padding: 4px 4px 4px 0px;
+}
+.tileContainerFlexBox > .sapMLabel:after{
+	content: ":";
+}
+
+.tileContainerBorder span {
+	fonst-size: 12pt;
+}

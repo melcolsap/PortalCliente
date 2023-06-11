@@ -1,0 +1,9 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<BusyDialog
+		title="Ejecutando su Pago"
+		text="Por favor espere mientras registramos su pago."
+		showCancelButton="true"
+		close="onDialogClosed" />
+</core:FragmentDefinition>

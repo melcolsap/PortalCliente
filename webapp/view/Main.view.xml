@@ -1,0 +1,162 @@
+<mvc:View controllerName="co.com.PortalCliente.PortalCliente.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:tnt="sap.tnt" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:micro="sap.ui.comp.smartmicrochart">
+	<tnt:ToolPage id="rootPage" class="sapUiSizeCompact sapMBtnContent">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<Image src="img/MitsubishiIcono.png" class="mitsubishiLogo"/>
+				<Link text="{i18n>PagMitsubishi}" href="https://co.mitsubishielectric.com/es/" target="_search" class="MitsubishiTitle"/>
+				<ToolbarSpacer/>
+				<Button text="Name Client" type="Transparent" icon="sap-icon://slim-arrow-down" iconFirst="false" class="RobotoType">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<Button text="Wompi" press=".onWompi"/>
+				<Button text="WompiPost" press=".onWompiPOST"/>
+				<Button text="Contratos" press=".onConsultaDoc"/>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation expanded="true" itemSelect=".onItemSelect">
+				<tnt:NavigationList items="{path: 'viewModel>/navigation'}">
+					<tnt:NavigationListItem text="{viewModel>title}" icon="{viewModel>icon}" enabled="{viewModel>enabled}" expanded="{viewModel>expanded}"
+						items="{viewModel>items}" key="{viewModel>key}">
+						<tnt:NavigationListItem text="{viewModel>title}" key="{viewModel>key}" enabled="{viewModel>enabled}"/>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="pageContainer">
+				<pages class="FondoImagen">
+					<!--<layout:VerticalLayout width="100%" class="headPages">
+						<f:ShellBar title="Application Title" secondTitle="Short description" homeIcon="./resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+							showCopilot="true" showSearch="true" showNotifications="true" showProductSwitcher="true" notificationsNumber="2"></f:ShellBar>
+						<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+							<GenericTile backgroundImage="test-resources/sap/m/demokit/sample/SlideTile/images/NewsImage2.png" frameType="TwoByOne"
+								press="pressOnTileOne">
+								<TileContent footer="August 21, 2016">
+									<NewsContent contentText="SAP Unveils Powerful New Player Comparision Tool Exclusively on NFL.com" subheader="Today, SAP News"/>
+								</TileContent>
+							</GenericTile>
+							<GenericTile backgroundImage="test-resources/sap/m/demokit/sample/SlideTile/images/NewsImage1.png" frameType="TwoByOne"
+								press="pressOnTileTwo">
+								<TileContent footer="August 21, 2016">
+									<NewsContent contentText="Wind Map: Monitoring Real-Time and Forecasted Wind Conditions across the Globe" subheader="Today, SAP News"/>
+								</TileContent>
+							</GenericTile>
+						</SlideTile>
+						<Panel headerText="Smart Stacked Bar Micro Chart With Criticality" class="sapUiSmallMarginBottom">
+							<micro:SmartComparisonMicroChart id="defaultStacked" entitySet="Revenues" chartBindingPath="/Revenues"/>
+							<Label text="Unit of Measure association:" design="Bold" class="sapUiSmallMarginTop"/>
+							<Label id="unitOfMeasure"/>
+						</Panel>
+					</layout:VerticalLayout>-->
+					<!--<layout:content>
+						<core:HTML content='&lt;div class=&quot;content&quot;&gt;&lt;h4&gt;Lorem ipsum&lt;/h4&gt;&lt;div&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/div&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://en.wikipedia.org/wiki/Lorem_ipsum&quot;&gt;Learn more about Lorem Ipsum ...&lt;/a&gt;&lt;/div&gt;'>
+						</core:HTML>
+					</layout:content>-->
+					<ScrollContainer id="ListadoOrdenes" horizontal="false" vertical="true" height="100%">
+						<Text text="Listado Ordenes"/>
+						<VBox width="100%" height="100%">
+							<layout:VerticalLayout width="100%" class="headPages">
+								<Toolbar class="noBoderToolbar">
+									<Title text="Cuenta: 809349303-2" titleStyle="H3"></Title>
+								</Toolbar>
+								<OverflowToolbar class="noBoderToolbar">
+									<Button text="Manual" type="Emphasized" press="addItem"/>
+									<ToolbarSpacer/>
+									<Select>
+										<items>
+											<core:Item key="1" text="multi"/>
+										</items>
+									</Select>
+									<SearchField placeholder="pleaceholder" showSearchButton="true"></SearchField>
+								</OverflowToolbar>
+							</layout:VerticalLayout>
+							<layout:BlockLayout background="Default" id="BlockLayout">
+								<layout:BlockLayoutRow>
+									<!--<layout:BlockLayoutCell>
+									<HBox>
+										<VBox class="tileContainerBorder tileContainerBackground sapUiSmallMargin">
+											<Toolbar class="noBoarderToolbar">
+												<core:Icon src="sap-icon://org.chart"/>
+												<Link text="Edificio Rosales" class="Link"/>
+											</Toolbar>
+											<FlexBox wrap="Wrap" alignItems="Center" renderType="Bare" class="tileContainerFlexBox">
+												<Label text="provider"/>
+												<Label text="Amazon"/>
+												<Text text="Texto"/>
+												<Image src="img/United-States.png"/>
+											</FlexBox>
+											<Toolbar class="noBoderToolbar">
+												<Button type="Transparent" icon="sap-icon://edit"/>
+												<Button type="Transparent" icon="sap-icon://message-information"/>
+												<Button type="Transparent" icon="sap-icon://delete"/>
+											</Toolbar>
+										</VBox>
+									</HBox>
+								</layout:BlockLayoutCell>-->
+								</layout:BlockLayoutRow>
+							</layout:BlockLayout>
+						</VBox>
+					</ScrollContainer>
+					<ScrollContainer id="Alertas" horizontal="false" vertical="true" height="100%">
+						<Text text="Listado Alertas"/>
+					</ScrollContainer>
+					<ScrollContainer id="NuevaAviso" horizontal="false" vertical="true" height="100%">
+						<Text text="Nuevo Aviso"/>
+						<core:Fragment fragmentName="co.com.PortalCliente.PortalCliente.view.Facturas" type="XML"/>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+			<!--<NavContainer id="pageContainer2" initialPage="ListadoOrdenes">
+				<pages>
+					<ScrollContainer id="ListadoOrdenes" horizontal="false" vertical="true" height="100%">
+						<Text text="Listado Ordenes"/>
+					</ScrollContainer>
+					<ScrollContainer id="Alertas" horizontal="false" vertical="true" height="100%">
+						<Text text="Listado Alertas"/>
+					</ScrollContainer>
+					<ScrollContainer id="NuevaAviso" horizontal="false" vertical="true" height="100%">
+						<Text text="Nuevo Aviso"/>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>-->
+		</tnt:mainContents>
+	</tnt:ToolPage>
+	<!--setAlternateRowColors-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.f.ShellBar/sample/sap.f.sample.ShellBar/code-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.collaboration.components.fiori.sharing.dialog.Component/sample/sap.collaboration.sample.ShareAttachmentsLinkAndComments-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.suite.ui.commons.taccount.TAccount/sample/sap.suite.ui.commons.sample.TAccount-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.collaboration.components.feed.Component/sample/sap.collaboration.sample.FeedComponentGroupIdMode-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.suite.ui.commons.Timeline/sample/sap.suite.ui.commons.sample.TimelineCustomGrouping-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.ui.layout.BlockLayout/sample/sap.ui.layout.sample.BlockLayoutDefault-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.ui.layout.cssgrid.CSSGrid-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.FlexBox/sample/sap.m.sample.FlexBoxRenderType-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.ui.layout.Splitter/sample/sap.ui.layout.sample.SplitterNested1-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.ui.core.StandardMargins/sample/sap.m.sample.StandardNoMargins-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.NotificationListItem/sample/sap.m.sample.NotificationListItem-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.ObjectListItem/sample/sap.m.sample.ObjectListItemMarkers-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.BusyDialog/sample/sap.m.sample.BusyDialog-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.LightBox/sample/sap.m.sample.LightBox-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.MessageBox/sample/sap.m.sample.MessageBox-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.m.MessagePopover/sample/sap.m.sample.MessagePopover-->
+	<!--https://ui5.sap.com/1.65.7/test-resources/sap/m/demokit/theming/webapp/index.html-->
+	<!--https://ui5.sap.com/1.65.7/#/entity/sap.ui.richtexteditor.RichTextEditor/sample/sap.ui.richtexteditor.sample.RichTextEditor-->
+	<!--https://ui5.sap.com/#/entity/sap.f.GridList/sample/sap.f.sample.GridListBoxContainerReal-->
+	<!--<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content></content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>-->
+</mvc:View>

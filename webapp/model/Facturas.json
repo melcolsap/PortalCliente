@@ -1,0 +1,25 @@
+{
+	"Facturas":[
+		{
+			"Descripcion": "Factuta Equipo 1",
+			"FechaCreada": "03/03/2023",
+			"FechaVencimiento": "03/06/2023",
+			"Valor": "12300000",
+			"Iva": "246000"
+		},
+		{
+			"Descripcion": "Factuta Equipo 2",
+			"FechaCreada": "03/05/2023",
+			"FechaVencimiento": "03/08/2023",
+			"Valor": "22300000",
+			"Iva": "446000"
+		},
+		{
+			"Descripcion": "Factuta Equipo 3",
+			"FechaCreada": "03/05/2023",
+			"FechaVencimiento": "03/08/2023",
+			"Valor": "22300000",
+			"Iva": "446000"
+		}
+	]
+}

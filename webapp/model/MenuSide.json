@@ -1,0 +1,56 @@
+{
+	"selectedKey": "Ordenes",
+	"navigation": [
+		{
+			"title": "Noticias",
+			"icon": "sap-icon://newspaper",
+			"expanded": true,
+			"key": "",
+			"items": [
+				{
+					"title": "Listado Ordenes",
+					"key": "ListadoOrdenes"
+				},
+				{
+					"title": "Nuevo Elemento",
+					"key": "NuevaAviso"
+				},
+				{
+					"title": "Alertas",
+					"key": "Alertas"
+				}
+			]
+		}
+	],
+	"fixedNavigation": [
+		{
+			"title": "Acceso a HelpDesk",
+			"icon": "sap-icon://fax-machine"
+		},
+		{
+			"title": "Ver historial de cambios",
+			"icon": "sap-icon://history"
+		},
+		{
+			"title": "Acceso a auditoria",
+			"icon": "sap-icon://customer-history"
+		}
+	],
+	"headerItems": [
+		{
+			"text": "File"
+		},
+		{
+			"text": "Edit"
+		},
+		{
+			"text": "View"
+		},
+		{
+			"text": "Settings"
+		},
+		{
+			"text": "Help"
+		}
+	]
+}
