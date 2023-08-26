@@ -3,7 +3,7 @@
 	<tnt:ToolPage id="rootPage" class="sapUiSizeCompact sapMBtnContent">
 		<tnt:header>
 			<tnt:ToolHeader>
-				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2">
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" press=".onSideNavButtonPress">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="NeverOverflow"/>
 					</layoutData>

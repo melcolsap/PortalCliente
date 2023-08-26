@@ -40,6 +40,8 @@ sap.ui.define([
 			this.getView().setModel(oJSONModelFacturas, "modelFacturas");
 			
 			this.BlockLayout = this.byId("BlockLayout");
+			this.onConsultaDoc('100958');
+			this.onConsultaFacturas('100950');
 		},
 		onItemSelect: function (oEvent) {
 			var oItem = oEvent.getParameter("item");
@@ -57,16 +59,32 @@ sap.ui.define([
 			var aFilter = new Filter({
 									path: "Kunnr",
 									operator: FilterOperator.EQ,
-									value1: '37'
+									value1: kunnr 
 								});	
-			this.getView().getModel().read("/DocumentoVaSet", {
-				async: false,
+			this.getView().getModel().read("/DocumentoVaSet('" + kunnr + "')", {
+				urlParameters: {
+					"$expand": "NavClienteToContratos"
+				},
+				method: "GET",
 				success: jQuery.proxy(this.onSuccessDocument, this),
-				error: jQuery.proxy(this.onErrorDocument, this),
-				filters: [aFilter]
+				error: jQuery.proxy(this.onErrorDocument, this)
+				//filters: [aFilter]
 			});					
 		},
-		addItem: function (){
+		onConsultaFacturas: function(kunnr){
+			var aFilter = new Filter({
+									path: "Zzkunnr",
+									operator: FilterOperator.EQ,
+									value1: kunnr
+								});	
+			this.getView().getModel().read("/FacturasSet", {
+				async: false,
+				success: jQuery.proxy(this.onSuccessFactura, this),
+				error: jQuery.proxy(this.onErrorFactura, this),
+				filters: [aFilter]
+			});	
+		},
+		addItem: function (Vbeln, Kunnr, Bstnk){
 			var oRow = new BlockLayoutRow();
 			var oCell = new BlockLayoutCell();
 			var oHBox = new HBox();
@@ -81,7 +99,7 @@ sap.ui.define([
 			
 			oVBox.addStyleClass("tileContainerBorder tileContainerBackground sapUiSmallMargin");
 			oToolbarTitle.addStyleClass("noBoarderToolbar");
-			oLink.setText("Contrato Adicionado por Codigo");
+			oLink.setText(Vbeln);
 			oToolbarTitle.addContent(oLink);
 			
 			oVBox.addItem(oToolbarTitle);
@@ -90,7 +108,7 @@ sap.ui.define([
 			oFlexBox.setAlignItems("Center");
 			//oFlexBox.setRenderType("Bare");
 			oFlexBox.addStyleClass("tileContainerFlexBox");
-			oLabel.setText("Prueba Label, adicion de texto mas extenso");
+			oLabel.setText(Kunnr);
 			//oLabel.addStyleClass("sapUiSmallMarginEnd");
 			oVBoxInside.addItem(oLabel);
 			//oFlexBox.addStyleClass("sapUiSmallMarginEnd");
@@ -321,11 +339,44 @@ sap.ui.define([
 			});
 			this.byId("TablaFacturas").setVisible(true);
 		},
+		onSideNavButtonPress: function () {
+			var oToolPage = this.byId("rootPage");
+			var bSideExpanded = oToolPage.getSideExpanded();
+
+			this._setToggleButtonTooltip(bSideExpanded);
+
+			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
+		},
+		_setToggleButtonTooltip: function (bLarge) {
+			var oToggleButton = this.byId('sideNavigationToggleButton');
+			if (bLarge) {
+				oToggleButton.setTooltip('Ampliar barra Navegación.');
+			} else {
+				oToggleButton.setTooltip('Contraer barra Navegación.');
+			}
+		},
 		onSuccessDocument: function (oData){
 			console.log(oData);
+			oData.results.forEach(element=>{
+				this.addItem(element.Vbeln, element.Kunnr, element.Bstnk);	
+			});
 		},
 		onErrorDocument: function (oError){
 			console.log(oError);
+		},
+		onSuccessFactura: function (oData){
+			console.log(oData);
+			//https://ui5.sap.com/#/entity/sap.m.StandardListItem/sample/sap.m.sample.StandardListItemWrapping/code
+		},
+		onErrorFactura: function (oError){
+			console.log(oError);
+		},
+		onAfterRendering: function(){
+			var oToolPage = this.byId("rootPage");
+			oToolPage.setSideExpanded(false);
+			var oToggleButton = this.byId('sideNavigationToggleButton');
+			oToggleButton.setTooltip('Ampliar barra Navegación.');
+		
 		}
 	});
 });
